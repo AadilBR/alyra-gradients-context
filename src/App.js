@@ -1,15 +1,15 @@
-import { Switch,Route} from "react-router-dom";
-import Home from "./pages/Home"
-import FullScreen from "./pages/FullScreen"
+import { Switch, Route, Redirect } from "react-router-dom";
+import Home from "./pages/Home";
+import FullScreen from "./pages/FullScreen";
 
-function App() {  
+function App() {
   return (
     <Switch>
-      <Route exact path ="/" component={Home}/>
-      <Route exact path ="/gradient/:id" component={FullScreen}/>
-    
+      <Route exact path="/" component={Home} />
+      <Route exact path="/gradient/:id" component={FullScreen} />
+      <Redirect to="/" />
     </Switch>
-  )
+  );
 }
 
-export default App
+export default App;
