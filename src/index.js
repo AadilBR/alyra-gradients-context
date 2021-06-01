@@ -10,9 +10,9 @@ import {BrowserRouter as Router} from 'react-router-dom'
 
 ReactDOM.render(
   <Router>
-  <GradientListContextProvider>
+    <GradientListContextProvider>
     <App />
-  </GradientListContextProvider>
+    </GradientListContextProvider>
   </Router>,
   document.getElementById("root")
 )

@@ -14,10 +14,10 @@ const FullScreen = () => {
       let [gradientId, setGradientId] = useState(Number(id))
 
       const handleNextClick = () => {
-         gradientId > (list.length) ? setGradientId(gradientId = 1) : setGradientId(gradientId + 1)
+         gradientId < (list.length) ? setGradientId(Number(gradientId) + 1) : setGradientId(list.length)
       }
       const handlePrevClick = () => {
-         setGradientId(gradientId - 1)
+         gradientId > 0 ? setGradientId(Number(gradientId) - 1) : setGradientId(1)
       }
 
 
@@ -28,8 +28,8 @@ const FullScreen = () => {
             className="flex-fill d-flex min-vh-100 d-flex flex-column"
             style={{
               backgroundImage: `linear-gradient(to right, ${
-                list[gradientId].start
-              }, ${list[gradientId].end})`,
+                list[gradientId]?.start
+              }, ${list[gradientId-1].end})`,
             }}
           >
             <nav className="fixed-top nav">
@@ -41,19 +41,19 @@ const FullScreen = () => {
               {gradientId > 1 && 
               <li className="nav-item">
                 <Link
-                  to={`/gradient/${gradientId}`}
-                  className="btn btn-outline-dark w-100"
+                  className="btn btn-dark text-white nav-link me-2"
+                  to={`/gradient/${Number(gradientId)-1}`}
                   onClick={handlePrevClick}
                 >
                   Précédent
                 </Link>     
               </li>
                }
-              {gradientId < list.length - 1 && 
+              {gradientId < list.length  && 
               <li className="nav-item">
                 <Link
-                  to={`/gradient/${gradientId}`}
-                  className="btn btn-outline-dark w-100"
+                  className="btn btn-dark text-white nav-link"
+                  to={`/gradient/${Number(gradientId)+1}`}
                   onClick={handleNextClick}
                 >
                   Suivant
@@ -62,11 +62,11 @@ const FullScreen = () => {
                }
             </nav>
             <div className="m-auto text-center">
-              <h1 className="text-white display-1">{list[gradientId - 1].name}</h1>
+              <h1 className="text-white display-1">{list[gradientId - 1]?.name}</h1>
               <div className="bg-white shadow p-2 rounded">
                 <code>
                   background-image: linear-gradient(to right,{" "}
-                  {list[id - 1].start}, {list[id - 1].end});
+                  {list[gradientId - 1]?.start}, {list[gradientId - 1]?.end});
                 </code>
               </div>
             </div>

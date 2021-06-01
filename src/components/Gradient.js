@@ -3,7 +3,7 @@ import GradientPill from "./GradientPill"
 import GradientCode from "./GradientCode"
 import GradientTags from "./GradientTags"
 import { useContext } from "react"
-import {useParams, Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { GradientContext } from "./../context/GradientContext"
 
 const Gradient = ({ colorStart, colorEnd, name, tags, id }) => {

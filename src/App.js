@@ -1,17 +1,13 @@
-import Home from './pages/Home'
-import FullSreen from './pages/FullScreen'
-import {Switch, Route } from "react-router"
+import { Switch,Route} from "react-router-dom";
+import Home from "./pages/Home"
+import FullScreen from "./pages/FullScreen"
 
-
-function App() {
-
- 
+function App() {  
   return (
     <Switch>
-      <Route exact path = '/'>
-        <Home />
-      </Route>
-      <Route path="/gradient/:id" exact component={FullSreen} />
+      <Route exact path ="/" component={Home}/>
+      <Route exact path ="/gradient/:id" component={FullScreen}/>
+    
     </Switch>
   )
 }
